@@ -1,0 +1,108 @@
+body {
+  background-color: #ad9c0285;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  display: block;
+  margin: 10px auto;
+  background-image: linear-gradient(to top, #3040d0 0%, #330867 100%);
+  max-width: 800px;
+}
+.button-search,
+.button-city,
+.enter-city {
+  background-color: #bdbdbd;
+  border-color: #bdbdbd;
+  font-size: 18px;
+}
+
+.enter-city {
+  background-color: #fff;
+}
+
+.button-search,
+.enter-city {
+  position: relative;
+  left: 15px;
+}
+
+.city,
+.date,
+.weather-conditions,
+.temperature,
+.degree-sign,
+.precipitation,
+.wind,
+.forecast,
+.forecast-da {
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
+
+.city,
+.temperature,
+.forecast-day {
+  text-align: center;
+}
+
+.date,
+.weather-conditions,
+.forecast {
+  text-align: left;
+}
+
+.precipitation,
+.wind {
+  text-align: right;
+}
+
+.city {
+  font-family: "Playfair Display", serif;
+  font-size: 100px;
+  padding: 30px 0;
+  font-weight: 300;
+}
+
+.temperature {
+  font-size: 100px;
+  position: relative;
+  left: 18px;
+}
+
+.degree-sign {
+  font-size: 20px;
+}
+
+.weather-conditions,
+.date,
+.precipitation,
+.wind {
+  font-size: 25px;
+  padding: 17px 0 0 0;
+}
+
+.day {
+  font-size: 20px;
+}
+
+.emoji {
+  font-size: 35px;
+}
+
+.degrees-forecast {
+  font-size: 20px;
+}
+
+.forecast {
+  padding: 10px 0;
+  font-size: 35px;
+}
+
+.forecast-wrapper {
+  background: linear-gradient(to top, #c2341b 0%, #aca000 100%);
+  border: solid #c2341b 1px;
+}
