@@ -1,6 +1,19 @@
-let currentTime = new Date();
+function loadPageCity(city) {
+  let apiKey = "e008579254b3fba07df70d1e8db97913";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(changeTemperature);
+}
 
-function dateChange(currenTime) {
+function currentDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   let days = [
     "Sunday",
     "Monday",
@@ -10,20 +23,8 @@ function dateChange(currenTime) {
     "Friday",
     "Saturday",
   ];
-  let day = days[currentTime.getDay()];
-  let dayOutput = document.querySelector("#day-of-the-week");
-  dayOutput.innerHTML = day;
-  let hourOutput = document.querySelector("#hour");
-  hourOutput.innerHTML = currentTime.getHours();
-  let minutesOutput = document.querySelector("#minutes");
-  minutesOutput.innerHTML = currentTime.getMinutes();
-}
-dateChange(currentTime);
-
-function loadPageCity(city) {
-  let apiKey = "e008579254b3fba07df70d1e8db97913";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(changeTemperature);
+  let day = days[date.getDay()];
+  return `${day}, ${hours}:${minutes}`;
 }
 
 function changeTemperature(response) {
@@ -37,6 +38,8 @@ function changeTemperature(response) {
   humidity.innerHTML = response.data.main.humidity;
   let windspeed = document.querySelector("#windspeed");
   windspeed.innerHTML = Math.round(response.data.wind.speed);
+  let date = document.querySelector("#date");
+  date.innerHTML = currentDate(response.data.dt * 1000);
 }
 
 function handleSubmit(event) {
