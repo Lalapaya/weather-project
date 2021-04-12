@@ -48,13 +48,11 @@ a {
 .forecast-day {
   text-align: center;
 }
-
-.date,
-.weather-conditions,
 .forecast {
   text-align: left;
 }
-
+.date,
+.weather-conditions,
 .precipitation,
 .wind {
   text-align: right;
