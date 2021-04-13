@@ -38,7 +38,7 @@ a {
 .precipitation,
 .wind,
 .forecast,
-.forecast-da {
+.forecast-day {
   color: #fff;
   font-family: "Montserrat", sans-serif;
 }
@@ -66,9 +66,11 @@ a {
 }
 
 .temperature {
-  font-size: 100px;
+  font-size: 150px;
+  text-align: center;
+  margin: 0;
   position: relative;
-  left: 18px;
+  left: 5px;
 }
 
 .degree-sign {
@@ -79,8 +81,8 @@ a {
 .date,
 .precipitation,
 .wind {
-  font-size: 25px;
-  padding: 17px 0 0 0;
+  font-size: 20px;
+  padding: 0;
 }
 
 .day {
@@ -103,4 +105,8 @@ a {
 .forecast-wrapper {
   background: linear-gradient(to top, #c2341b 0%, #aca000 100%);
   border: solid #c2341b 1px;
+}
+
+.row li {
+  list-style-type: none;
 }

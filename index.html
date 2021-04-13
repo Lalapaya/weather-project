@@ -25,7 +25,7 @@
         <div class="card-body">
           <form id="search-form">
             <div class="row">
-              <div class="col-sm-7">
+              <div class="col-7">
                 <input
                   type="text"
                   class="form-control enter-city"
@@ -33,7 +33,7 @@
                   id="city-input"
                 />
               </div>
-              <div class="col-sm-2">
+              <div class="col-2">
                 <input
                   type="submit"
                   value="Search"
@@ -41,7 +41,7 @@
                   id="search-button"
                 />
               </div>
-              <div class="col-sm-3">
+              <div class="col-3">
                 <input
                   type="submit"
                   value="Current City"
@@ -53,33 +53,25 @@
           </form>
           <h2 class="city" id="city-heading"></h2>
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-4">
               <span class="weather-icon">🌥</span>
             </div>
-            <div class="col-sm-4">
+            <div class="col-4">
               <h1 class="temperature">
                 <span id="temperature"></span
                 ><small class="degree-sign">°C </small>
               </h1>
             </div>
-            <div class="col-sm-4">
+            <div class="col-4">
               <div class="row">
-                <div class="col-sm-12 date">
-                  <span id="date"> </span>
-                </div>
-                <div
-                  class="col-sm-12 weather-conditions"
-                  id="sky-condition"
-                ></div>
-              </div>
-
-              <div class="row">
-                <div class="col-sm-12 precipitation">
-                  Humidity: <span id="humidity"></span>%
-                </div>
-                <div class="col-sm-12 wind">
-                  Wind <span id="windspeed"></span> m/s
-                </div>
+                <ul>
+                  <li class="date" id="date"></li>
+                  <li class="weather-conditions" id="sky-condition"></li>
+                  <li class="precipitation">
+                    Humidity: <span id="humidity"></span>%
+                  </li>
+                  <li class="wind">Wind <span id="windspeed"></span> m/s</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -87,7 +79,7 @@
           <div class="card forecast-wrapper">
             <div class="card-body">
               <div class="row">
-                <div class="col-sm-3 forecast-day">
+                <div class="col-3 forecast-day">
                   <h4 class="day">
                     Tuesday<br /><small class="emoji">🌥</small><br /><small
                       class="degrees-forecast"
@@ -95,7 +87,7 @@
                     >
                   </h4>
                 </div>
-                <div class="col-sm-3 forecast-day">
+                <div class="col-3 forecast-day">
                   <h4 class="day">
                     Wednesday<br /><small class="emoji">🌥</small><br /><small
                       class="degrees-forecast"
@@ -103,7 +95,7 @@
                     >
                   </h4>
                 </div>
-                <div class="col-sm-3 forecast-day">
+                <div class="col-3 forecast-day">
                   <h4 class="day">
                     Thursday<br /><small class="emoji">🌥</small><br /><small
                       class="degrees-forecast"
@@ -111,7 +103,7 @@
                     >
                   </h4>
                 </div>
-                <div class="col-sm-3 forecast-day">
+                <div class="col-3 forecast-day">
                   <h4 class="day">
                     Friday<br /><small class="emoji">🌥</small><br /><small
                       class="degrees-forecast"
