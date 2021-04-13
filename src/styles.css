@@ -65,12 +65,17 @@ a {
   font-weight: 300;
 }
 
+.weather-icon {
+  font-size: 50px;
+}
+
 .temperature {
   font-size: 150px;
   text-align: center;
   margin: 0;
   position: relative;
   left: 5px;
+  bottom: 27px;
 }
 
 .degree-sign {
