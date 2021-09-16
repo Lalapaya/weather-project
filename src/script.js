@@ -28,6 +28,7 @@ function currentDate(timestamp) {
 }
 
 function changeTemperature(response) {
+  console.log(response.data);
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(response.data.main.temp);
   let cityHeading = document.querySelector("#city-heading");
@@ -40,6 +41,8 @@ function changeTemperature(response) {
   windspeed.innerHTML = Math.round(response.data.wind.speed);
   let date = document.querySelector("#date");
   date.innerHTML = currentDate(response.data.dt * 1000);
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
 function handleSubmit(event) {
