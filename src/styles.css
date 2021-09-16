@@ -1,5 +1,8 @@
 body {
-  background-color: #ad9c0285;
+  background-image: url("images/few clouds.jpg");
+  background-size: cover;
+  padding: 0;
+  margin: 0;
 }
 
 a {
@@ -123,4 +126,17 @@ a {
 
 .temperature .active:hover {
   text-decoration: none;
+}
+
+.rain {
+  height: 100vh;
+  background: url(https://i.postimg.cc/MKgprHJg/rain.png);
+  animation: rain 0.3s linear infinite;
+  padding: 0;
+  margin: 0;
+}
+
+@keyframes rain {
+  0% {background-position: 0px 0px;}
+  100% {background-position: 150px 400px;}
 }
