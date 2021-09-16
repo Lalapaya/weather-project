@@ -29,8 +29,9 @@ function currentDate(timestamp) {
 
 function changeTemperature(response) {
   console.log(response.data);
+  celsiusTemperature = response.data.main.temp;
   let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = Math.round(response.data.main.temp);
+  temperature.innerHTML = Math.round(celsiusTemperature);
   let cityHeading = document.querySelector("#city-heading");
   cityHeading.innerHTML = response.data.name;
   let skyCondition = document.querySelector("#sky-condition");
@@ -63,10 +64,36 @@ function startNavigator() {
   navigator.geolocation.getCurrentPosition(getPosition);
 }
 
+function changeToFahrenheit(event) {
+  event.preventDefault();
+  celsiusButton.classList.remove("active");
+  fahrenheitButton.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let temperature = document.querySelector("#temperature");
+  temperature.innerHTML = Math.round(fahrenheitTemperature);
+
+}
+
+function changeToCelsius(event){
+  event.preventDefault();
+  celsiusButton.classList.add("active");
+  fahrenheitButton.classList.remove("active");
+  let temperature = document.querySelector("#temperature");
+  temperature.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
 let currentCityButton = document.querySelector("#current-city-button");
 currentCityButton.addEventListener("click", startNavigator);
+
+let fahrenheitButton = document.querySelector("#fahrenheit");
+fahrenheitButton.addEventListener("click", changeToFahrenheit);
+
+let celsiusButton = document.querySelector("#celsius");
+celsiusButton.addEventListener("click", changeToCelsius);
 
 loadPageCity("London");

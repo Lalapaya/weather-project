@@ -115,3 +115,12 @@ a {
 .row li {
   list-style-type: none;
 }
+
+.temperature .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+
+.temperature .active:hover {
+  text-decoration: none;
+}
