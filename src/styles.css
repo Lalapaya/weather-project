@@ -130,13 +130,36 @@ a {
 
 .rain {
   height: 100vh;
-  background: url(https://i.postimg.cc/MKgprHJg/rain.png);
-  animation: rain 0.3s linear infinite;
+  background: url(images/rain.png);
+  animation: rain 0.4s linear infinite;
   padding: 0;
   margin: 0;
 }
 
 @keyframes rain {
-  0% {background-position: 0px 0px;}
-  100% {background-position: 150px 400px;}
+  0% {background-position: 0% 0%;}
+  100% {background-position: 20% 100%;}
+}
+
+.rain::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(images/lightining.png);
+  top: -100px;
+  transform: rotate(180deg);
+  animation: lightning 3.5s linear infinite;
+  opacity: 1;
+}
+
+@keyframes lightning {
+  0% {opacity: 0;}
+  20% {opacity: 0;}
+  21% {opacity: 1;}
+  25% {opacity: 0;}
+  30% {opacity: 0;}
+  31% {opacity: 1;}
+  35% {opacity: 0;}
+  100% {opacity: 0;}
 }
