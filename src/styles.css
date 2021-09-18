@@ -1,8 +1,23 @@
 body {
-  background-image: url("images/few clouds.jpg");
   background-size: cover;
   padding: 0;
   margin: 0;
+}
+
+body.dark {
+  background-image: url("images/dark_clouds.jpg");
+}
+
+body.clouds {
+  background-image: url("images/few_clouds.jpg");
+}
+
+body.clear {
+  background-image: url("images/clear_sky.jpg");
+}
+
+body.mist {
+  background-image: url("images/mist.jpg");
 }
 
 a {
@@ -136,12 +151,20 @@ a {
   margin: 0;
 }
 
+.rainlightning {
+  height: 100vh;
+  background: url(images/rain.png);
+  animation: rain 0.4s linear infinite;
+  padding: 0;
+  margin: 0;
+}
+
 @keyframes rain {
   0% {background-position: 0% 0%;}
   100% {background-position: 20% 100%;}
 }
 
-.rain::before{
+.rainlightning::before{
   content: "";
   position: absolute;
   width: 100%;
@@ -163,3 +186,4 @@ a {
   35% {opacity: 0;}
   100% {opacity: 0;}
 }
+

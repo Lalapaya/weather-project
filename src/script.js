@@ -44,6 +44,7 @@ function changeTemperature(response) {
   date.innerHTML = currentDate(response.data.dt * 1000);
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  checkWeather("");
 }
 
 function handleSubmit(event) {
@@ -82,6 +83,24 @@ function changeToCelsius(event){
   temperature.innerHTML = Math.round(celsiusTemperature);
 }
 
+function checkWeather(weather) {
+  rainElement.classList.remove("rain", "rainlightning");
+  bodyElement.classList.remove("clear", "dark", "clouds", "mist");
+  if (weather == "Thunderstorm") {
+    rainElement.classList.add("rainlightning");
+    bodyElement.classList.add("dark");
+  } else if (weather == "Rain" || weather == "Drizzle") {
+    rainElement.classList.add("rain");
+    bodyElement.classList.add("dark");
+  } else if (weather == "Clouds") {
+    bodyElement.classList.add("clouds");
+  } else if (weather == "Clear"){
+    bodyElement.classList.add("clear");
+  } else {
+    bodyElement.classList.add("mist");
+  }
+}
+
 let celsiusTemperature = null;
 
 let searchForm = document.querySelector("#search-form");
@@ -95,5 +114,10 @@ fahrenheitButton.addEventListener("click", changeToFahrenheit);
 
 let celsiusButton = document.querySelector("#celsius");
 celsiusButton.addEventListener("click", changeToCelsius);
+
+let rainElement = document.querySelector("#rain");
+let lightningElement = document.querySelector("#lightning");
+
+let bodyElement = document.querySelector("body");
 
 loadPageCity("London");
