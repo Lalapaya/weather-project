@@ -58,7 +58,8 @@ a {
 .precipitation,
 .wind,
 .forecast,
-.forecast-day {
+.forecast-day,
+.update-footnote {
     color: #fff;
     font-family: 'Montserrat', sans-serif;
 }
@@ -151,6 +152,13 @@ a {
 
 .forecast-icon {
     max-width: 100%;
+}
+
+.update-footnote {
+    text-align: center;
+    padding: 0;
+    padding-top: 2.5px;
+    margin: 0;
 }
 /**END STYLING**/
 /**RAIN ANIMATION**/

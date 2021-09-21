@@ -4,6 +4,23 @@ function loadPageCity(city) {
     axios.get(apiUrl).then(changeTemperature);
 }
 
+function getLocalTime(lat, lon) {
+    let apiKey = '01a39e21994c474c8af9a33ca6ce7e56';
+    let apiUrl = `https://api.ipgeolocation.io/timezone?apiKey=${apiKey}&lat=${lat}&long=${lon}`;
+    axios.get(apiUrl).then(changeLocalTime);
+}
+
+function changeLocalTime(response) {
+    // console.log(response.data);
+    let responseDay = response.data.date_time_txt;
+    let day = responseDay.split(',');
+    let responseTime = response.data.time_24;
+    let time = responseTime.split(':');
+    let output = day[0] + ', ' + time[0] + ':' + time[1];
+    let date = document.querySelector('#date');
+    date.innerText = output;
+}
+
 function currentDate(timestamp) {
     let date = new Date(timestamp);
     let hours = date.getHours();
@@ -14,9 +31,7 @@ function currentDate(timestamp) {
     if (minutes < 10) {
         minutes = `0${minutes}`;
     }
-    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    let day = days[date.getDay()];
-    return `${day}, ${hours}:${minutes}`;
+    return `${hours}:${minutes}`;
 }
 
 function changeTemperature(response) {
@@ -26,8 +41,8 @@ function changeTemperature(response) {
     let skyCondition = document.querySelector('#sky-condition');
     let humidity = document.querySelector('#humidity');
     let windspeed = document.querySelector('#windspeed');
-    let date = document.querySelector('#date');
     let iconElement = document.querySelector('#icon');
+    let updatedElement = document.querySelector('#updated');
 
     celsiusTemperature = response.data.main.temp;
     temperature.innerHTML = Math.round(celsiusTemperature);
@@ -35,9 +50,10 @@ function changeTemperature(response) {
     skyCondition.innerHTML = response.data.weather[0].main;
     humidity.innerHTML = response.data.main.humidity;
     windspeed.innerHTML = Math.round(response.data.wind.speed);
-    date.innerHTML = currentDate(response.data.dt * 1000);
     iconElement.setAttribute('src', `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    updatedElement.innerHTML = currentDate(response.data.dt * 1000);
 
+    getLocalTime(response.data.coord.lat, response.data.coord.lon);
     checkWeather(response.data.weather[0].main);
     displayForecast();
 }
