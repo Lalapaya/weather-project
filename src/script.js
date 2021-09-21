@@ -108,7 +108,6 @@ function changeToCelsius(event) {
     fahrenheitButton.classList.remove('active');
     Cookies.set('unit', 'metric');
     loadPageCity(document.querySelector('#city-heading').innerText);
-    console.log(Cookies.get('unit'));
 }
 
 function checkWeather(weather) {
