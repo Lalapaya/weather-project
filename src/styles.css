@@ -114,10 +114,6 @@ a {
     font-size: 20px;
 }
 
-.emoji {
-    font-size: 35px;
-}
-
 .degrees-forecast {
     font-size: 20px;
 }
@@ -149,8 +145,12 @@ a {
     text-decoration: none;
 }
 
-#forecastDegreesLow {
+.forecastDegreesLow {
     opacity: 0.5;
+}
+
+.forecast-icon {
+    max-width: 100%;
 }
 /**END STYLING**/
 /**RAIN ANIMATION**/

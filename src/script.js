@@ -39,6 +39,7 @@ function changeTemperature(response) {
     iconElement.setAttribute('src', `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
     checkWeather(response.data.weather[0].main);
+    displayForecast();
 }
 
 function handleSubmit(event) {
@@ -98,6 +99,23 @@ function checkWeather(weather) {
     }
 }
 
+function displayForecast() {
+    let forecastElement = document.querySelector('#forecast');
+
+    let forecastHTML = '<div class="row" id="forecast">';
+    let days = ['Thu', 'Fri', 'Sat', 'Sun'];
+    days.forEach(function (day) {
+        forecastHTML += `<div class="col-2 forecast-day" id="forecast">
+            <h4 class="day">
+                <span>${day}</span><br /><img src="http://openweathermap.org/img/wn/04n@2x.png" alt="" class="forecast-icon" />
+                <br /><small>10°C</small> <small class="forecastDegreesLow">10°C</small>
+            </h4>
+        </div>`;
+    });
+    forecastHTML += '</div>';
+    forecastElement.innerHTML = forecastHTML;
+}
+
 let celsiusTemperature = null;
 
 let searchForm = document.querySelector('#search-form');
@@ -121,5 +139,3 @@ let snowflakesElement = document.querySelector('#snowflakes');
 snowflakesElement.style.visibility = 'hidden';
 
 loadPageCity('London');
-
-snowStorm.resume();
