@@ -1,6 +1,8 @@
 function loadPageCity(city) {
     let apiKey = 'e008579254b3fba07df70d1e8db97913';
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${Cookies.get('unit')}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${
+        Cookies.get('unit') == undefined ? 'metric' : Cookies.get('unit')
+    }`;
     axios.get(apiUrl).then(changeTemperature);
 }
 
@@ -37,9 +39,9 @@ function currentDate(timestamp) {
 function getForecast(coordinates) {
     // console.log(coordinates);
     let apiKey = 'e008579254b3fba07df70d1e8db97913';
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${Cookies.get(
-        'unit'
-    )}&appid=${apiKey}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${
+        Cookies.get('unit') == undefined ? 'metric' : Cookies.get('unit')
+    }&appid=${apiKey}`;
     axios.get(apiUrl).then(displayForecast);
 }
 
@@ -84,9 +86,9 @@ function getPosition(position) {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
     let apiKey = 'e008579254b3fba07df70d1e8db97913';
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${Cookies.get(
-        'unit'
-    )}&appid=${apiKey}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${
+        Cookies.get('unit') == undefined ? 'metric' : Cookies.get('unit')
+    }&appid=${apiKey}`;
     axios.get(apiUrl).then(changeTemperature);
 }
 
@@ -186,7 +188,3 @@ let snowflakesElement = document.querySelector('#snowflakes');
 snowflakesElement.style.visibility = 'hidden';
 
 loadPageCity('London');
-
-if (Cookies.get('unit') == undefined) {
-    Cookies.set('unit', 'metric');
-}
