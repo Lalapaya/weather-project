@@ -37,7 +37,7 @@ function currentDate(timestamp) {
 function getForecast(coordinates) {
     // console.log(coordinates);
     let apiKey = 'e008579254b3fba07df70d1e8db97913';
-    let apiUrl = `http://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${Cookies.get(
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${Cookies.get(
         'unit'
     )}&appid=${apiKey}`;
     axios.get(apiUrl).then(displayForecast);
