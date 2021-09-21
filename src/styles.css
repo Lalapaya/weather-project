@@ -132,6 +132,10 @@ a {
     border: solid #c2341b 1px;
 }
 
+.forecast-day {
+    padding: 0;
+}
+
 .row li {
     list-style-type: none;
 }
@@ -143,6 +147,10 @@ a {
 
 .temperature .active:hover {
     text-decoration: none;
+}
+
+#forecastDegreesLow {
+    opacity: 0.5;
 }
 /**END STYLING**/
 /**RAIN ANIMATION**/
