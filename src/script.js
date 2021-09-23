@@ -1,8 +1,6 @@
-function loadPageCity(city) {
+function loadPageCity(city, unit) {
     let apiKey = 'e008579254b3fba07df70d1e8db97913';
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${
-        Cookies.get('unit') == undefined ? 'metric' : Cookies.get('unit')
-    }`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
     axios.get(apiUrl).then(changeTemperature);
 }
 
@@ -36,17 +34,16 @@ function currentDate(timestamp) {
     return `${hours}:${minutes}`;
 }
 
-function getForecast(coordinates) {
-    // console.log(coordinates);
+function getForecast(coordinates, unit) {
+    // console.log(coordinates, unit);
     let apiKey = 'e008579254b3fba07df70d1e8db97913';
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${
-        Cookies.get('unit') == undefined ? 'metric' : Cookies.get('unit')
-    }&appid=${apiKey}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${unit}&appid=${apiKey}`;
     axios.get(apiUrl).then(displayForecast);
 }
 
 function changeTemperature(response) {
-    // console.log(response.data);
+    let responseUrl = response.config.url;
+    let unit = responseUrl.split('=');
     let temperature = document.querySelector('#temperature');
     let cityHeading = document.querySelector('#city-heading');
     let skyCondition = document.querySelector('#sky-condition');
@@ -65,30 +62,22 @@ function changeTemperature(response) {
 
     getLocalTime(response.data.coord.lat, response.data.coord.lon);
     checkWeather(response.data.weather[0].main);
-    getForecast(response.data.coord);
-
-    if (Cookies.get('unit') == 'metric') {
-        celsiusButton.classList.add('active');
-        fahrenheitButton.classList.remove('active');
-    } else if (Cookies.get('unit') == 'imperial') {
-        celsiusButton.classList.remove('active');
-        fahrenheitButton.classList.add('active');
-    }
+    getForecast(response.data.coord, unit[3]);
 }
 
 function handleSubmit(event) {
     event.preventDefault();
     let city = document.querySelector('#city-input').value;
-    loadPageCity(city);
+    loadPageCity(city, 'metric');
+    celsiusButton.classList.add('active');
+    fahrenheitButton.classList.remove('active');
 }
 
 function getPosition(position) {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
     let apiKey = 'e008579254b3fba07df70d1e8db97913';
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${
-        Cookies.get('unit') == undefined ? 'metric' : Cookies.get('unit')
-    }&appid=${apiKey}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
     axios.get(apiUrl).then(changeTemperature);
 }
 
@@ -100,16 +89,14 @@ function changeToFahrenheit(event) {
     event.preventDefault();
     celsiusButton.classList.remove('active');
     fahrenheitButton.classList.add('active');
-    Cookies.set('unit', 'imperial');
-    loadPageCity(document.querySelector('#city-heading').innerText);
+    loadPageCity(document.querySelector('#city-heading').innerText, 'imperial');
 }
 
 function changeToCelsius(event) {
     event.preventDefault();
     celsiusButton.classList.add('active');
     fahrenheitButton.classList.remove('active');
-    Cookies.set('unit', 'metric');
-    loadPageCity(document.querySelector('#city-heading').innerText);
+    loadPageCity(document.querySelector('#city-heading').innerText, 'metric');
 }
 
 function checkWeather(weather) {
@@ -187,4 +174,4 @@ let bodyElement = document.querySelector('body');
 let snowflakesElement = document.querySelector('#snowflakes');
 snowflakesElement.style.visibility = 'hidden';
 
-loadPageCity('London');
+loadPageCity('London', 'metric');
